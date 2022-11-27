@@ -114,10 +114,14 @@
 						providers={['google', 'facebook', 'twitter']}
 						onSignOut={() => {
 							localStorage.clear();
+							goto('/info');
 							// window.location.href = '/'
 						}}
 						profileFunction={() => {
 							//console.log('do some profileFunction here')
+						}}
+						onSignIn={() => {
+							goto('/');
 						}}
 					/>
 				</ion-menu-toggle>

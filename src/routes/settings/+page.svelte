@@ -4,6 +4,7 @@
 	import { goto } from '$app/navigation'
 	import { currentUser } from '$services/supabase.auth.service';
 	import { saveSettings } from './page';
+	import { dayID } from '$stores/day';
 
 	let days: any[]; // = cache || []
 	let settings: any = {
@@ -31,7 +32,8 @@
 
 
 	const gotoDay = (id: string) => {
-		goto(`/day/[id]`,{id})
+		dayID.set(id);
+		goto('/day');
 	}
 	const save = async () => {
 		console.log('save settings as', settings)

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Login from '../../lib/components/Login/Login.svelte';
 	import { currentUser } from '$services/supabase.auth.service';
+	import { goto } from '$app/navigation';
 </script>
 
 <ion-header translucent="true">
@@ -31,10 +32,14 @@
 			providers={['google', 'facebook', 'twitter']}
 			onSignOut={() => {
                 localStorage.clear();
-				window.location.href = '/'
+				goto('/info');
+				// window.location.href = '/'
 			}}
 			profileFunction={() => {
 				//console.log('do some profileFunction here')
+			}}
+			onSignIn={() => {
+				goto('/');
 			}}
 		/>
         </div>

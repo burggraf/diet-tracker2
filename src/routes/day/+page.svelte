@@ -1,9 +1,7 @@
 <script lang="ts">
 	// import { IonReorderGroup } from '@ionic/core/components/ion-reorder-group';
-	console.log('************');
-	console.log('slug page...');
-	console.log('************');
 	import IonPage from '$ionpage';
+	import { dayID as id } from '$stores/day'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { getDay, getNextFreeDay, getDayId, 
@@ -27,14 +25,15 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { gen_random_uuid } from '$services/utility.functions.service';
 
-	let id: string = ($page.url.search || '').replace(/\?/g,'');
-	console.log('*************** id', id);
-
+	// let id: string = ($page.url.search || '').replace(/\?/g,'');
+	if (!$id) {
+		goto('/calendar');
+	}
 	let day: any = {} ;// = cache || {}
 	let recordset: any;
 
 	const init = async () => {
-		if (id === 'new') {
+		if ($id === 'new') {
 			day = {
 					id: gen_random_uuid(),
 					user_id: $currentUser?.id || null,
@@ -59,7 +58,7 @@
 				if (error) {
 					console.error('getNextFreeDay error', error)
 				} else {
-					id = data;
+					$id = data;
 					day = {
 						id: gen_random_uuid(),
 						user_id: $currentUser?.id || null,
@@ -74,7 +73,7 @@
 						notes: '',
 					}
 				}
-			}} else if (id.length === 10) {
+			}} else if ($id.length === 10) {
 			// new specific date sent in url
 			day = {
 				id: gen_random_uuid(),
@@ -89,10 +88,10 @@
 				weight: 0,
 				notes: '',
 			}
-			id = day.id
+			$id = day.id
 		} else {
-			console.log('calling getDay with id', id);
-			const { data, error } = await getDay(id);
+			console.log('calling getDay with $id', $id);
+			const { data, error } = await getDay($id);
 			if (error) {
 				console.error('getDay error', error)
 			} else {
@@ -107,7 +106,7 @@
 			goto('/info')
 			return
 		}
-		if (id === 'new') {
+		if ($id === 'new') {
 			try {
 				const { data, error } = await getCurrentWeight()
 				if (error) {
@@ -173,7 +172,7 @@
 				console.error('save day error', error)
 			}
 		} else {
-			id = day.id
+			$id = day.id
 		}
 	}
 	const do_delete_day = async () => {
@@ -294,7 +293,7 @@
 	}
 	function toggleDatePicker() {
 		const el = document.getElementById('datepicker')
-		if (id == 'new' || id.length === 10) {
+		if ($id == 'new' || $id.length === 10) {
 			if (el) {
 				el.classList.toggle('hidden')
 			}
@@ -327,7 +326,7 @@
 			</ion-title>
 			<ion-buttons slot="end">
 				<!-- {#if mode === 'view'} -->
-				{#if id !== 'new'}
+				{#if $id !== 'new'}
 					<ion-button on:click={do_delete_day}>
 						<ion-icon slot="icon-only" icon={trashOutline} />
 					</ion-button>

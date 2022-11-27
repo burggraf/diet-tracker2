@@ -6,6 +6,7 @@
 	import { addOutline } from 'ionicons/icons'
 	import { goto } from '$app/navigation'
 	import { getToday } from '$services/utility.functions.service';
+	import { dayID } from '$stores/day';
 	let settings = {
 		daily_budget: 0,
 		target_weight: 0,
@@ -16,7 +17,8 @@
 	onMount(async () => {})
 	onDestroy(() => {})
 	const gotoDay = (id: string) => {
-		goto(`/day?${id}`)
+		dayID.set(id);
+		goto('/day');
 	}
 	const ionViewDidEnter = async () => {
 		// console.log('** ionViewDidEnter')
