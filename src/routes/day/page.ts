@@ -110,3 +110,10 @@ export const getDay = async (id: string) => {
     }    
     return { data, error };  
   }
+
+  export const saveSettings = async (settings: any) => {
+    const { data, error } = await supabase.auth.updateUser({
+      data: settings
+    })    
+    return { data, error };
+  }

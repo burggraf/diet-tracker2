@@ -16,7 +16,7 @@
 	onMount(async () => {})
 	onDestroy(() => {})
 	const gotoDay = (id: string) => {
-		goto(`/day/${id}`)
+		goto(`/day$?{id}`)
 	}
 	const ionViewDidEnter = async () => {
 		// console.log('** ionViewDidEnter')

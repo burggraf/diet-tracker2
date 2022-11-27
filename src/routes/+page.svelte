@@ -8,10 +8,9 @@
 	  const {data, error} = await load_today();
 	  if (data && data.id) {
 		const id = data.id;
-		// goto(`/day/${data.id}`);
-		goto(`/day/${id}`)
+		goto(`/day?${id}`)
 	  } else {
-		goto(`/day/new`)
+		goto(`/day?new`)
 	  }
 	  })
   
