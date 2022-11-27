@@ -40,7 +40,7 @@
 		{ title: 'Calendar', url: '/calendar', icon: allIonicIcons.calendarOutline, requireLogin: true },
 		{ title: 'Charts', url: '/chart', icon: allIonicIcons.barChartOutline, requireLogin: true },
 		{ title: 'Settings', url: '/settings', icon: allIonicIcons.settingsOutline, requireLogin: true },
-		{ title: 'Info', url: '/info', icon: allIonicIcons.informationCircle, requireLogin: false },
+		{ title: 'Info', url: '/info', icon: allIonicIcons.informationCircleOutline, requireLogin: false },
 
 	]
 
