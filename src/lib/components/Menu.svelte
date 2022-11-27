@@ -24,6 +24,8 @@
 	const app_description = __APP_DESCRIPTION__;
 	const app_menu_title = __APP_MENU_TITLE__;
 	const app_menu_subtitle = __APP_MENU_SUBTITLE__;
+	const app_theme_color = __APP_THEME_COLOR__;
+	const app_background_color = __APP_BACKGROUND_COLOR__;
 	// *******************
 
 	import { toast } from '$services/toast'

@@ -15,3 +15,5 @@ declare const __APP_MENU_TITLE__: string
 declare const __APP_MENU_SUBTITLE__: string
 declare const __APP_PROFILE_TABLE__: string
 declare const __APP_PROFILE_KEY__: string
+declare const __APP_THEME_COLOR__: string
+declare const __APP_BACKGROUND_COLOR__: string

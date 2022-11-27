@@ -1,7 +1,10 @@
 {
   "name": "diet-tracker2",
+  "short_name": "Diet",
   "description": "Diet Tracker",
-  "version": "0.7.5",
+  "version": "0.7.8",
+  "theme_color": "#387ef5",
+  "background_color": "#387ef5",
   "private": true,
   "homepage": "https://diet-tracker2.pages.dev",
   "menu_title": "Diet Tracker",
