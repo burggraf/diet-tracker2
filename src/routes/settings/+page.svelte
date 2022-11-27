@@ -1,10 +1,9 @@
 <script lang="ts">
 	import IonPage from "$ionic/svelte/components/IonPage.svelte";
 	import { checkmarkOutline } from 'ionicons/icons'
-	import SupabaseAuthService from '$services/supabase.auth.service'
 	import { goto } from '$app/navigation'
-	import { currentUser } from '$services/user.store';
-	const supabaseAuthService = SupabaseAuthService.getInstance()
+	import { currentUser } from '$services/supabase.auth.service';
+	import { saveSettings } from './page';
 
 	let days: any[]; // = cache || []
 	let settings: any = {
@@ -36,11 +35,11 @@
 	}
 	const save = async () => {
 		console.log('save settings as', settings)
-		const { user, error } = await supabaseAuthService.saveSettings(settings);
+		const { data, error } = await saveSettings(settings);
 		if (error) {
 			console.log('save error', error)
 		} else {
-			console.log('save results', user, error)
+			console.log('save results', data, error)
 		}
 	}
 	function focusOnNumericInput(event) {

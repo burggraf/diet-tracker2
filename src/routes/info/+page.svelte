@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Login from '$components/Login/Login.svelte'
-	import { currentUser } from '$services/user.store';
+	import Login from '../../lib/components/Login/Login.svelte';
+	import { currentUser } from '$services/supabase.auth.service';
 </script>
 
 <ion-header translucent="true">
