@@ -6,10 +6,11 @@ export const getDay = async (id: string) => {
     let loader;
     loader = await loadingBox('loading day...')
     const { data, error } = await supabase.from('days')
-      .select()
+      .select('*')
       .eq('id', id)
       .limit(1)
-      .single()
+      .single();
+      console.log('** getDay returning data: ', data);
     loader.dismiss();
     return { data, error };
   }
