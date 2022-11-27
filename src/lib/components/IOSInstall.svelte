@@ -30,7 +30,7 @@
 </script>
 
 <svelte:head>
-	<title>Welcom to install</title>
+	<title>Welcome to install</title>
 </svelte:head>
 
 <ion-content fullscreen class="ion-padding">
